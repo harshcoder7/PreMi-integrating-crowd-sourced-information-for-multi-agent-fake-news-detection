@@ -11,7 +11,7 @@ A machine learning-based system for detecting fake news articles using Natural L
 - [Usage](#usage)
   - [1. Data Collection](#1-data-collection)
   - [2. Dataset Preparation](#2-dataset-preparation)
-  - [3. Model Training](#3-model-training)
+  - [3. Class Imbalance Handling](#3-class-imbalance-handling)
   - [4. Model Evaluation](#4-model-evaluation)
 - [Model Architecture](#model-architecture)
 - [Dataset](#dataset)
@@ -134,19 +134,20 @@ jupyter notebook Balanced_Dataset_with_LLM.ipynb
 
 **Output:** `crowd_sourced_balanced_dataset.csv` - A balanced dataset ready for training
 
-### 3. Model Training
+### 3. Class Imbalance Handling
 
-Train advanced GAN-LLM models for fake news detection:
+Address class imbalance using advanced GAN-LLM techniques:
 
 ```bash
 jupyter notebook gan-llm-implementation.ipynb
 ```
 
 **What it does:**
-- Implements GAN architecture for fake news generation
-- Trains discriminator for detection
-- Combines with LLM features for enhanced accuracy
-- Saves trained models for evaluation
+- Implements GAN architecture to generate synthetic samples for minority class
+- Balances the dataset using generative models
+- Combines with LLM features for realistic data augmentation
+- Ensures equal representation of fake and real news samples
+- Saves balanced models for evaluation
 
 ### 4. Model Evaluation
 
