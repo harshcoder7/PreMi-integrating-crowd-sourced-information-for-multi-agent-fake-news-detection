@@ -12,7 +12,8 @@ A machine learning-based system for detecting fake news articles using Natural L
   - [1. Data Collection](#1-data-collection)
   - [2. Dataset Preparation](#2-dataset-preparation)
   - [3. Class Imbalance Handling](#3-class-imbalance-handling)
-  - [4. Model Evaluation](#4-model-evaluation)
+  - [4. Transformer Classification](#4-transformer-classification)
+  - [5. Model Evaluation](#5-model-evaluation)
 - [Model Architecture](#model-architecture)
 - [Dataset](#dataset)
 - [Contributing](#contributing)
@@ -22,7 +23,7 @@ A machine learning-based system for detecting fake news articles using Natural L
 
 - **Data Collection Pipeline**: Automated data collection and preprocessing
 - **Balanced Dataset**: LLM-augmented balanced dataset generation
-- **Machine Learning Models**: TF-IDF vectorization with Logistic Regression
+- **Transformer Models**: Multi-head self-attention architecture for text classification
 - **GAN-LLM Integration**: Advanced fake news generation and detection
 - **Model Evaluation**: Comprehensive evaluation metrics using Opik framework
 - **Text Preprocessing**: NLTK-based text cleaning and normalization
@@ -35,6 +36,7 @@ fake-news-detection/
 ├── Data_Collection.ipynb           # Data collection and initial processing
 ├── Balanced_Dataset_with_LLM.ipynb # Dataset balancing using LLM
 ├── gan-llm-implementation.ipynb    # GAN-LLM model implementation
+├── Transformer_classification.ipynb # Transformer-based classification model
 ├── evaluation.ipynb                # Model evaluation and metrics
 ├── crowd_sourced_balanced_dataset.csv  # Balanced training dataset
 ├── requirements.txt               # Project dependencies
@@ -149,7 +151,22 @@ jupyter notebook gan-llm-implementation.ipynb
 - Ensures equal representation of fake and real news samples
 - Saves balanced models for evaluation
 
-### 4. Model Evaluation
+### 4. Transformer Classification
+
+Train a Transformer-based model for fake news classification:
+
+```bash
+jupyter notebook Transformer_classification.ipynb
+```
+
+**What it does:**
+- Implements multi-head self-attention mechanism
+- Uses token and position embeddings for text representation
+- Trains transformer blocks with dropout and regularization
+- Generates ROC curves and confusion matrices
+- Visualizes model performance with t-SNE embeddings
+
+### 5. Model Evaluation
 
 Evaluate model performance using comprehensive metrics:
 
@@ -185,6 +202,13 @@ jupyter notebook evaluation.ipynb
   - Max features: 5000
   - Captures term importance across documents
   - Sparse matrix representation for efficiency
+
+### Transformer Architecture
+
+- **Multi-Head Self-Attention**: Captures contextual relationships in text
+- **Token & Position Embeddings**: Combines word and positional information
+- **Dropout & Regularization**: Prevents overfitting with L2 regularization
+- **Binary Classification**: Outputs probability for FAKE/REAL prediction
 
 ### GAN-LLM Models
 
