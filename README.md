@@ -12,9 +12,7 @@ A machine learning-based system for detecting fake news articles using Natural L
   - [1. Data Collection](#1-data-collection)
   - [2. Dataset Preparation](#2-dataset-preparation)
   - [3. Model Training](#3-model-training)
-  - [4. Running the Web Application](#4-running-the-web-application)
-  - [5. Model Evaluation](#5-model-evaluation)
-- [API Endpoints](#api-endpoints)
+  - [4. Model Evaluation](#4-model-evaluation)
 - [Model Architecture](#model-architecture)
 - [Dataset](#dataset)
 - [Contributing](#contributing)
@@ -26,7 +24,6 @@ A machine learning-based system for detecting fake news articles using Natural L
 - **Balanced Dataset**: LLM-augmented balanced dataset generation
 - **Machine Learning Models**: TF-IDF vectorization with Logistic Regression
 - **GAN-LLM Integration**: Advanced fake news generation and detection
-- **Web Interface**: Flask-based REST API for real-time predictions
 - **Model Evaluation**: Comprehensive evaluation metrics using Opik framework
 - **Text Preprocessing**: NLTK-based text cleaning and normalization
 
@@ -39,10 +36,7 @@ fake-news-detection/
 ├── Balanced_Dataset_with_LLM.ipynb # Dataset balancing using LLM
 ├── gan-llm-implementation.ipynb    # GAN-LLM model implementation
 ├── evaluation.ipynb                # Model evaluation and metrics
-├── app.py                          # Flask web application
 ├── crowd_sourced_balanced_dataset.csv  # Balanced training dataset
-├── fake_news_model.pkl            # Trained classification model
-├── tfidf_vectorizer.pkl           # TF-IDF vectorizer
 ├── requirements.txt               # Project dependencies
 └── README.md                      # Project documentation
 ```
@@ -84,7 +78,7 @@ pip install -r requirements.txt
 If `requirements.txt` doesn't exist, install the following packages:
 
 ```bash
-pip install flask pandas numpy scikit-learn nltk opik llama-index openai python-dotenv nest-asyncio jupyter ipywidgets
+pip install pandas numpy scikit-learn nltk opik llama-index openai python-dotenv nest-asyncio jupyter ipywidgets
 ```
 
 ### Step 4: Download NLTK Data
@@ -142,9 +136,7 @@ jupyter notebook Balanced_Dataset_with_LLM.ipynb
 
 ### 3. Model Training
 
-#### Option A: Using the GAN-LLM Implementation
-
-For advanced GAN-based fake news detection:
+Train advanced GAN-LLM models for fake news detection:
 
 ```bash
 jupyter notebook gan-llm-implementation.ipynb
@@ -154,37 +146,9 @@ jupyter notebook gan-llm-implementation.ipynb
 - Implements GAN architecture for fake news generation
 - Trains discriminator for detection
 - Combines with LLM features for enhanced accuracy
+- Saves trained models for evaluation
 
-#### Option B: Using the Flask App (Automatic Training)
-
-The Flask application will automatically train a model on startup if no pre-trained model exists:
-
-```bash
-python app.py
-```
-
-The app will:
-- Load `crowd_sourced_balanced_dataset.csv`
-- Train a TF-IDF + Logistic Regression model
-- Save models as `fake_news_model.pkl` and `tfidf_vectorizer.pkl`
-- Display training accuracy
-
-### 4. Running the Web Application
-
-Once the model is trained, start the Flask web server:
-
-```bash
-python app.py
-```
-
-The application will be available at: `http://localhost:5000`
-
-**Available features:**
-- Submit text for fake news detection
-- Get confidence scores and probabilities
-- Retrain model via API endpoint
-
-### 5. Model Evaluation
+### 4. Model Evaluation
 
 Evaluate model performance using comprehensive metrics:
 
@@ -204,50 +168,6 @@ jupyter notebook evaluation.ipynb
 - **Answer Relevance**: Semantic relevance of predictions
 - Model comparison (Llama-4 vs DeepSeek-R1)
 
-## 🔌 API Endpoints
-
-### 1. Home Page
-```
-GET /
-```
-Returns the web interface for manual text input.
-
-### 2. Predict Fake News
-```
-POST /predict
-Content-Type: application/json
-
-{
-  "text": "Your news article text here..."
-}
-```
-
-**Response:**
-```json
-{
-  "prediction": "FAKE",
-  "confidence": "87.32%",
-  "probabilities": {
-    "real": "12.68%",
-    "fake": "87.32%"
-  }
-}
-```
-
-### 3. Retrain Model
-```
-POST /train
-```
-
-Triggers model retraining with the latest dataset.
-
-**Response:**
-```json
-{
-  "message": "Model trained successfully!"
-}
-```
-
 ## 🧠 Model Architecture
 
 ### Text Preprocessing Pipeline
@@ -265,18 +185,12 @@ Triggers model retraining with the latest dataset.
   - Captures term importance across documents
   - Sparse matrix representation for efficiency
 
-### Classification Model
-
-- **Algorithm**: Logistic Regression
-- **Max Iterations**: 1000
-- **Regularization**: L2 (Ridge)
-- **Output**: Binary classification (FAKE/REAL)
-
-### Advanced Models (GAN-LLM)
+### GAN-LLM Models
 
 - **Generator**: Creates synthetic fake news samples
 - **Discriminator**: Distinguishes real from fake news
 - **LLM Integration**: Leverages Llama-4 and DeepSeek-R1 for contextual understanding
+- **Output**: Binary classification (FAKE/REAL)
 
 ## 📊 Dataset
 
@@ -295,25 +209,6 @@ Triggers model retraining with the latest dataset.
 - Real news from verified sources
 - LLM-augmented synthetic samples for balance
 
-## 🧪 Testing the Application
-
-### Test with cURL
-
-```bash
-curl -X POST http://localhost:5000/predict \
-  -H "Content-Type: application/json" \
-  -d '{"text": "Breaking: Scientists discover chocolate cures all diseases!"}'
-```
-
-### Test with Python
-
-```python
-import requests
-
-response = requests.post('http://localhost:5000/predict',
-    json={'text': 'Your news article here...'})
-print(response.json())
-```
 
 ## 📈 Model Performance
 
@@ -329,10 +224,6 @@ Results from evaluation notebook:
 *Note: Actual performance may vary based on dataset and configuration*
 
 ## 🛠️ Troubleshooting
-
-### Issue: Model files not found
-
-**Solution**: Run `python app.py` to trigger automatic model training, or train manually using the notebooks.
 
 ### Issue: NLTK data not found
 
@@ -374,7 +265,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Scikit-learn for machine learning algorithms
 - Opik for experiment tracking and evaluation
 - Llama-Index for LLM integration
-- Flask for web framework
+- Groq for LLM API access
 
 ## 📧 Contact
 
