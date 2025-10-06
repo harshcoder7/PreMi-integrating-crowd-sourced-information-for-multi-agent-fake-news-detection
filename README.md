@@ -209,20 +209,6 @@ jupyter notebook evaluation.ipynb
 - Real news from verified sources
 - LLM-augmented synthetic samples for balance
 
-
-## 📈 Model Performance
-
-Results from evaluation notebook:
-
-| Metric | Score |
-|--------|-------|
-| Accuracy | 85%+ |
-| Precision | ~84% |
-| Recall | ~86% |
-| F1-Score | ~85% |
-
-*Note: Actual performance may vary based on dataset and configuration*
-
 ## 🛠️ Troubleshooting
 
 ### Issue: NLTK data not found
