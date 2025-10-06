@@ -242,9 +242,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Llama-Index for LLM integration
 - Groq for LLM API access
 
-## 📧 Contact
 
-For questions or feedback, please open an issue on GitHub or contact [your-email@example.com]
 
 ---
 
