@@ -1,4 +1,4 @@
-# Fake News Detection System
+# Multi Agent Fake News Detection System
 
 A machine learning-based system for detecting fake news articles using Natural Language Processing (NLP) techniques and ensemble learning methods. This project combines traditional ML models with LLM-based approaches for enhanced accuracy.
 
